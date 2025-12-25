@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ReservationMapper">
+
+    <!-- 查询所有（关联user表获取用户名） -->
+    <select id="selectAll" resultType="com.example.entity.Reservation">
+        select reservation.*, user.name as userName
+        from `reservation`
+        left join user on reservation.user_id = user.id
+        <where>
+            <if test="title != null and title != ''">
+                and reservation.title like concat('%', #{title}, '%')
+            </if>
+            <if test="status != null and status != ''">
+                and reservation.status = #{status}
+            </if>
+            <if test="userId != null">
+                and reservation.user_id = #{userId}
+            </if>
+        </where>
+        order by reservation.id desc
+    </select>
+
+    <!-- 新增预约 -->
+    <insert id="insert">
+        insert into `reservation` (title, content, reservation_time, create_time, status, user_id, remark)
+        values (#{title}, #{content}, #{reservationTime}, #{createTime}, #{status}, #{userId}, #{remark})
+    </insert>
+
+    <!-- 更新预约 -->
+    <update id="updateById">
+        update `reservation`
+        set title = #{title},
+            content = #{content},
+            reservation_time = #{reservationTime},
+            create_time = #{createTime},
+            status = #{status},
+            user_id = #{userId},
+            remark = #{remark}
+        where id = #{id}
+    </update>
+
+</mapper>

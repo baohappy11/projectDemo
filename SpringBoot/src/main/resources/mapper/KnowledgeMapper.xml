@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.KnowledgeMapper">
+    <select id="selectAll" resultType="com.example.entity.Knowledge">
+        select Knowledge.*, category.title as categoryTitle, user.name as userName from `knowledge`
+        left join category on knowledge.category_id = category.id
+        left join user on knowledge.user_id = user.id
+        <where>
+            <if test="title != null and title != ''"> and knowledge.title like concat('%', #{title}, '%')</if>
+        </where>
+        order by id desc
+    </select>
+
+    <insert id="insert">
+        insert into `knowledge` (img,title,content,time,category_id,user_id)
+        values (#{img},#{title},#{content},#{time},#{categoryId},#{userId})
+    </insert>
+
+    <update id="updateById">
+        update `knowledge` set img=#{img}, title = #{title}, content = #{content}, time =
+        #{time},category_id=#{categoryId},user_id=#{userId}
+        where id = #{id}
+    </update>
+</mapper>
