@@ -3,7 +3,7 @@
     <div style="width: 350px;background: white;border-radius: 5%;box-shadow: 0 0 10px black;padding: 40px 20px;opacity: 0.9" >
       <el-form ref="formRef" :model="data.form" :rules="data.rules">
         <div style="text-align: center; font-weight: bold;font-size: 24px">欢 迎 登 录</div>
-        <div style="margin-bottom: 40px;text-align: center; font-weight: bold;font-size: 14px">（课堂演示）</div>
+        <div style="margin-bottom: 40px;text-align: center; font-weight: bold;font-size: 14px">（DevShare）</div>
         <el-form-item prop="username">
           <el-input size="large" v-model="data.form.username" autocomplete="off" prefix-icon="User" placeholder="请输入账号" />
         </el-form-item>

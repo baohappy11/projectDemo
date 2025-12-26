@@ -10,7 +10,7 @@ import { createRouter, createWebHistory } from 'vue-router'
           {path: 'home', name: '首页', component: () => import('../views/Home.vue'),},
           {path: 'admin', name: '管理员信息', component: () => import('../views/Admin.vue'),},
           {path: 'user', name: '普通用户信息', component: () => import('../views/User.vue'),},
-          {path: 'about', name: '关于', component: () => import('../views/Admin.vue'),},
+          {path: 'about', name: '关于', component: () => import('../views/About.vue'),},
           {path: 'person', name: '个人中心', component: () => import('../views/Person.vue'),},
           {path: 'updatePassword', name: '修改密码', component: () => import('../views/updatePassword.vue'),},
           {path: 'notice', name: '公告管理', component: () => import('../views/Notice.vue'),},
